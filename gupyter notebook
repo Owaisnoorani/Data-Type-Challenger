@@ -1,0 +1,67 @@
+# Advanced Data Type Quiz Program (100 points, hidden answers)
+
+# Function to display the quiz
+def data_type_quiz():
+    print("Welcome to the Advanced Data Type Quiz!\n")
+
+    # Define a list of questions (Answers are hidden)
+    questions = [
+        {"question": "What is the data type of (5,)?", "correct_index": 0},
+        {"question": "What is the data type of {'name': 'Ali'}?", "correct_index": 1},
+        {"question": "What is the data type of {1, 2, 3}?", "correct_index": 2},
+        {"question": "What is the data type of 5.0?", "correct_index": 3},
+        {"question": "What is the data type of 'False'?", "correct_index": 4},
+        {"question": "What is the data type of False?", "correct_index": 5},
+        {"question": "What is the data type of 10 ** 2?", "correct_index": 0},
+        {"question": "What is the data type of range(5)?", "correct_index": 6},
+        {"question": "What is the data type of [x for x in range(5)]?", "correct_index": 7},
+        {"question": "What is the data type of None?", "correct_index": 8}
+    ]
+    
+    # List of possible data types (answers are not directly in the question)
+    data_types = ["tuple", "dict", "set", "float", "str", "bool", "range", "list", "NoneType"]
+
+    # Initialize score and tracking of correct/incorrect answers
+    score = 0
+    correct_answers = 0
+    incorrect_answers = 0
+    wrong_answers = []  # To store incorrect questions
+    
+    # Each question will have 10 points (total 10 questions)
+    total_points = 100
+    points_per_question = total_points // len(questions)
+    
+    # Iterate through each question
+    for i, q in enumerate(questions):
+        # Show the question
+        print(f"Question {i+1}: {q['question']}")
+        
+        # Get the user's answer
+        user_answer = input("Enter the data type: ").lower()
+        
+        # Check if the answer is correct using the hidden index
+        correct_answer = data_types[q["correct_index"]]
+        
+        if user_answer == correct_answer:
+            print("Correct!\n")
+            score += points_per_question
+            correct_answers += 1
+        else:
+            print(f"Wrong! The correct answer was {correct_answer}.\n")
+            incorrect_answers += 1
+            wrong_answers.append(q['question'])
+    
+    # Show the final score and feedback
+    print(f"\nQuiz Finished!\nYour final score is: {score}/{total_points}")
+    print(f"Correct Answers: {correct_answers}")
+    print(f"Incorrect Answers: {incorrect_answers}\n")
+    
+    if incorrect_answers > 0:
+        print("Questions you got wrong:")
+        for question in wrong_answers:
+            print(f"- {question}")
+    else:
+        print("Amazing! You got all answers correct!")
+    
+# Run the quiz
+data_type_quiz()
